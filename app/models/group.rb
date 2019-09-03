@@ -11,5 +11,4 @@ class Group < ApplicationRecord
     else
       'まだメッセージはありません。'
     end
-  end
-
+  en
