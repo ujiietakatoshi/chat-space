@@ -1,11 +1,23 @@
 $(function(){
   function buildHTML(message){
-    var html = `<p>
-                  <strong>
-                    <a href=/users/${message.user_id}>${message.user_name}</a>
-                    ：
-                  </strong>
-                  ${message.text}
+    var content = message.content ? `${ message.content }` : "";
+    var img = message.image ? `<img src= ${ message.image }>` : "";
+    var html = `<div class="message" data-id="${message.id}">
+                  <div class="message__detail">
+                    <p class="message__detail__current-user-name">
+                      ${message.user_name}
+                    </p>
+                    <p class="message__detail__date">
+                      ${message.date}
+                    </p>
+                  </div>
+                  <p class="message_body">
+                    <div>
+                    ${content}
+                    </div>
+                    ${img}
+                  </p>
+                </div>`
                 </p>`
     return html;
   }
@@ -23,7 +35,7 @@ $(function(){
   })
   .done(function(data){
     var html = buildHTML(data);
-    $('.messages').append(html)
+    $('.message').append(html)
     $('.textbox').val('')
   })
   .fail(function(){
