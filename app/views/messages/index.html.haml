@@ -15,20 +15,11 @@
       .right-header
         .right-header__button
           Edit
+
     .messages
-    = render @messages
-      .message
-         = render @messages
-        .upper-message
-          .upper-message__user-name
-            メンバー
-          .upper-message__date
-            2019/08/27
-        .lower-meesage
-          .lower-message__content
-            メッセージ
- 
-   .form
+      = render @messages
+
+    .form
       = form_for [@group, @message] do |f|
         = f.text_field :content, class: 'form__message', placeholder: 'type a message'
         .form__mask
