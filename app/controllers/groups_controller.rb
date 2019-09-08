@@ -29,19 +29,7 @@ class GroupsController < ApplicationController
     else
       render :new
     end
-
   end
-
-    def edit
-    end
-    
-    def update
-      if @group.update(group_params)
-        redirect_to group_messages_path(@group), notice: 'グループを編集しました'
-      else
-        render :edit
-      end
-    end
 
   private
 
