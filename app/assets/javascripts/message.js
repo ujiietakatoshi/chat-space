@@ -42,7 +42,7 @@ $(function(){
        $('.hidden').val('');
       })
      .fail(function(){
-        alert('error');
+        alert('何をしているんですか？');
       })
     })
   });
