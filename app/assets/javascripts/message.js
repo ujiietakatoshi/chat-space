@@ -42,7 +42,7 @@ $(function(){
      
       })
      .fail(function(){
-        alert('何をしているんですか？');
+        alert('何でそんなことするんですか？');
         $( ".form__submit").prop( "disabled", false );
       })
     })
