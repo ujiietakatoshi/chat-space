@@ -46,7 +46,7 @@ $(function(){
         $( ".form__submit").prop( "disabled", false );
       })
     })
-    var reloadMessages = function() {
+      var reloadMessages = function() {
       //カスタムデータ属性を利用し、ブラウザに表示されている最新メッセージのidを取得
       var last_message_id = $('data-message-id:last').data('message-id');
       $.ajax({
@@ -58,16 +58,16 @@ $(function(){
         //dataオプションでリクエストに値を含める
         data: {id: last_message_id}
       })
-      .done(function(message) {
+      .done(function(messages) {
         var insertHTML = '';
-        message.forEach(function(message){
+        messages.forEach(function(message){
         insertHTML = buildHTML(message);
-        $('.message').appnd(insertHTML);
-        $("html,body").animate({scrollTop:$('message').offset().top});
+        $('.messages').appnd(insertHTML);
       })
       .fail(function() {
         console.log('error');
-      });
-    };
-  setInterval(reloadMessages, 3000);
-  });
+      })
+    })
+  }
+  setInterval(reloadMessages, 5000);
+});
