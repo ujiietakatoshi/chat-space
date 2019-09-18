@@ -38,13 +38,12 @@ $(function(){
         $('.messages').animate({scrollTop: $('.messages')[0].scrollHeight}, 'fast');
         $('.new_message')[0].reset();
       })
-     .always(function(){
-        $( ".form__submit").prop( "disabled", false );
-      })
      .fail(function(){
         alert('何でそんなことするんですか？');
-        $( ".form__submit").prop( "disabled", false );
       })
+    　.always(function(){
+      　$( ".form__submit").prop( "disabled", false );
+    　})
     })
       var reloadMessages = function() {
         if (window.location.href.match(/\/groups\/\d+\/messages/)){
