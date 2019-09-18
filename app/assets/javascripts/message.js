@@ -35,9 +35,11 @@ $(function(){
       .done(function(data){
         var html = buildHTML(data);
         $('.messages').append(html);
-        $( ".form__submit").prop( "disabled", false );
         $('.messages').animate({scrollTop: $('.messages')[0].scrollHeight}, 'fast');
         $('.new_message')[0].reset();
+      })
+     .always(function(){
+        $( ".form__submit").prop( "disabled", false );
       })
      .fail(function(){
         alert('何でそんなことするんですか？');
@@ -62,7 +64,7 @@ $(function(){
           })
         })
           .fail(function() {
-            console.log('error');
+            alert('自動更新失敗');
           })
         }
         else {
