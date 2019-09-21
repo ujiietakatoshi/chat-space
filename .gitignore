@@ -16,7 +16,7 @@
 # Ignore Byebug command history file.
 .byebug_history
 
-# Ignore CarrierWave file.
-# public/
+Ignore CarrierWave file.
+public/
 
 config/secrets.yml
