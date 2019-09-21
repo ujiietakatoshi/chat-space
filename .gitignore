@@ -18,3 +18,5 @@
 
 # Ignore CarrierWave file.
 # public/
+
+config/secrets.yml
