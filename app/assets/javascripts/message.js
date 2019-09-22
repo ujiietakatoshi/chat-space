@@ -1,6 +1,6 @@
 $(function(){
     function buildHTML(message){
-      var imagehtml = message.image == null ? "" : `<img src="${message.image}" class="lower-message__image">`
+      var imagehtml = (message.image == null) ? "" : `<img src="${message.image}" class="lower-message__image">`
       var html = `<div class="message" data-message-id=${message.id}>
                       <div class="upper-message">
                         <div class="upper-message__user-name">
@@ -23,7 +23,7 @@ $(function(){
     $('#new_message').on('submit', function(e){
       e.preventDefault();
       var formData = new FormData(this);
-      var href = $(this).attr('action')
+      var href = $(this).attr('action');
       $.ajax({
         url: href,
         type: "POST",
@@ -70,5 +70,5 @@ $(function(){
           clearInterval(reloadMessages);
         }
       }
-  setInterval(reloadMessages, 3000);
+  setInterval(reloadMessages, 5000);
 });
