@@ -34,18 +34,19 @@ $(function() {
 
   $("#user-search-field").on("keyup", function() {
     var input = $("#user-search-field").val();
-
+    var group_id = $('.chat__group_id').attr('value');
+    
     if (input.length){
       $.ajax({
         type: 'GET',
         url: '/users',
-        data: { keyword: input },
+        data: { keyword: input, groupId: group_id},
         dataType: 'json'
       })
-      .done(function(user) {
+      .done(function(users) {
         $("#user-search-result").empty();
-          if (user.length !== 0) {
-            user.forEach(function(user){
+          if (users.length !== 0) {
+            users.forEach(function(user){
               appendUserToSearchList(user);
             });
           }
