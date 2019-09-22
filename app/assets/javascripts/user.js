@@ -9,8 +9,8 @@ $(function() {
           <p class="chat-group-user__name">${ user.name }</p>
           <div class="user-search-add chat-group-user__btn chat-group-user__btn--add" data-user-id="${ user.id }" data-user-name=${ user.name }>追加</div>
       </div>`
-　　 search_list.append(html);
-　　 return html;
+    search_list.append(html);
+    return html;
    }
 
   function appendUserToMemberList(name, user_id) {
@@ -20,7 +20,7 @@ $(function() {
         <p class="chat-group-user__name">${ name }</p>
         <div class='user-search-remove chat-group-user__btn chat-group-user__btn--remove js-remove-btn'>削除</div>
       </div>`
-　　 member_list.append(html);
+    member_list.append(html);
   }
 
   function appendNoUserToSearchList(user) {
@@ -31,44 +31,47 @@ $(function() {
     search_list.append(html);
   }
 
-  $(function(){
-    $("#user-search-field").on("keyup", function() {
-      var input = $("#user-search-field").val();
 
+  $("#user-search-field").on("keyup", function() {
+    var input = $("#user-search-field").val();
+
+    if (input.length){
       $.ajax({
         type: 'GET',
         url: '/users',
         data: { keyword: input },
         dataType: 'json'
       })
-
       .done(function(user) {
         $("#user-search-result").empty();
           if (user.length !== 0) {
             user.forEach(function(user){
-            appendUserToSearchList(user);
+              appendUserToSearchList(user);
             });
           }
           else {
             appendNoUserToSearchList("一致するユーザーはいません");
           }
-        })
+      })
       .fail(function() {
         alert('ユーザー検索に失敗しました');
       })
+      }
+    else {
+      $("#user-search-result").empty();
+    }
+  });
+
+  $(function(){
+    $(document).on('click', '.user-search-add', function() {
+      var name = $(this).attr("data-user-name");
+      var user_id = $(this).attr("data-user-id");
+      $(this).parent().remove();
+      appendUserToMemberList(name, user_id);
     });
 
-    $(function(){
-      $(document).on('click', '.user-search-add', function() {
-        var name = $(this).attr("data-user-name");
-        var user_id = $(this).attr("data-user-id");
-        $(this).parent().remove();
-        appendUserToMemberList(name, user_id);
-      });
-
-　    $(document).on("click", '.user-search-remove', function() {
-        $(this).parent().remove();
-      });
+      $(document).on("click", '.user-search-remove', function() {
+      $(this).parent().remove();
     });
   });
 });
