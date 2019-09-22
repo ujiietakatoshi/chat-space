@@ -23,13 +23,17 @@
       }
     }
     .right-header {
-      border: 1px solid $light_blue;
-      color: $light_blue;
+      border: 1px solid #38AEF0;
+      color: #38AEF0;
       float: right;
       height: 40px;
       line-height: 40px;
       margin-top: 28px;
       padding: 0 20px;
+      .EDIT{
+        text-decoration:none;
+        color: #38AEF0;
+      }
     }
   }
 
@@ -40,6 +44,7 @@
     padding: 46px 40px 0;
     height: calc(100vh - 190px);
     .message {
+      margin-bottom:40px;
       .upper-message {
         display: flex;
         &__user-name {
