@@ -80,6 +80,7 @@
       float: left;
       height: 50px;
       width: calc(100vh - 150px);
+      padding-left: 10px;
     }
     &__mask {
       background-color: $white;
@@ -89,6 +90,7 @@
       &__image {
         font-size: 20px;
         line-height: 50px;
+        position: relative;
       }
       .hidden {
         display: none;
