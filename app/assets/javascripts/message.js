@@ -23,7 +23,7 @@ $(function(){
     $('#new_message').on('submit', function(e){
       e.preventDefault();
       var formData = new FormData(this);
-      var href = window.location.href
+      var href = $(this).attr('action')
       $.ajax({
         url: href,
         type: "POST",
@@ -41,9 +41,9 @@ $(function(){
      .fail(function(){
         alert('何でそんなことするんですか？');
       })
-    　.always(function(){
-      　$( ".form__submit").prop( "disabled", false );
-    　})
+      .always(function(){
+        $( ".form__submit").prop( "disabled", false );
+      })
     })
       var reloadMessages = function() {
         if (window.location.href.match(/\/groups\/\d+\/messages/)){
@@ -70,5 +70,5 @@ $(function(){
           clearInterval(reloadMessages);
         }
       }
-  setInterval(reloadMessages, 1000);
+  setInterval(reloadMessages, 3000);
 });
