@@ -72,12 +72,12 @@ $(function() {
       $(this).parent().remove();
       appendUserToMemberList(name, user_id);
     });
-      $(document).on("click", '.user-search-remove', function() {
-        for(i=0; i<usersname.length; i++){
-          if(usersname[i] == name){
-          usersname.splice(i,1);
-          }
+    $(document).on("click", '.user-search-remove', function() {
+      for(i=0; i<usersname.length; i++){
+      if(usersname[i] == name){
+      usersname.splice(i--,1);
+      }}
       $(this).parent().remove();
-      }});
+      });
   });
 });
