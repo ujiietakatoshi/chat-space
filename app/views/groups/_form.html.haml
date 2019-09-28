@@ -9,8 +9,8 @@
     .chat-group-form__field--left
       = f.label :name, class: 'chat-group-form__label'
     .chat-group-form__field--right
-      = f.text_field :name, class: 'chat__group_name chat-group-form__input', placeholder: 'グループ名を入力してください'
-      = f.hidden_field :id, class: 'chat__group_id', value: group.id
+      = f.text_field :name, class: "chat__group_name chat-group-form__input", placeholder: "グループ名を入力してください"
+      = f.hidden_field :id, class: "chat__group_id", value: group.id
 
   .chat-group-form__field.clearfix
     .chat-group-form__field--left
@@ -32,7 +32,8 @@
         - @group.users.each do |user|
           - if user.id != current_user.id
             .chat-group-user.clearfix
-              %input{name: 'group[user_ids][]', type: 'hidden', value: "#{user.id}"}
+              %input.chat-group-user{name: 'group[user_ids][]', type: 'hidden', value: "#{user.id}"}
+              タグにクラスを指定
               %p.chat-group-user__name
                 =user.name
               .user-search-remove.chat-group-user__btn.chat-group-user__btn--remove.js-remove-btn 削除

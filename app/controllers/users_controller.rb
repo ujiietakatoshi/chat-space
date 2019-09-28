@@ -4,11 +4,10 @@ class UsersController < ApplicationController
    if params[:groupId].present?
     @group = Group.find(params[:groupId])
     @ids = @group.users.ids
-    @users = User.where.not(id: @ids).where('(name LIKE(?)) and (id != ?)', "%#{params[:keyword]}%", "#{current_user.id}")
+    @users = User.where.not(id: @ids).where('(name LIKE(?)) and (id!= ?)', "%#{params[:keyword]}%", "#{current_user.id}")
    else
-    @users = User.where('(name LIKE(?)) and (id != ?)', "%#{params[:keyword]}%", "#{current_user.id}")
+    @users = User.where('(name LIKE(?)) and (id!= ?)', "%#{params[:keyword]}%", "#{current_user.id}")
    end
-
     respond_to do |format|
       format.html
       format.json

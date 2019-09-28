@@ -31,11 +31,15 @@ $(function() {
     search_list.append(html);
   }
 
+  var usersname = [];
 
   $("#user-search-field").on("keyup", function() {
     var input = $("#user-search-field").val();
-    var group_id = $('.chat__group_id').attr('value');
-    
+    var group_id = $('.chat__group_id').val();
+    $('.chat-group-user__selected_user_id').each(function(){
+      groupId.push(groupId);
+    });
+
     if (input.length){
       $.ajax({
         type: 'GET',
@@ -46,9 +50,9 @@ $(function() {
       .done(function(users) {
         $("#user-search-result").empty();
           if (users.length !== 0) {
-            users.forEach(function(user){
+            users.forEach(function(user){if(usersname.indexOf(user.name) === -1){
               appendUserToSearchList(user);
-            });
+            }});
           }
           else {
             appendNoUserToSearchList("一致するユーザーはいません");
@@ -63,16 +67,21 @@ $(function() {
     }
   });
 
-  $(function(){
+  $(function(user){
     $(document).on('click', '.user-search-add', function() {
       var name = $(this).attr("data-user-name");
       var user_id = $(this).attr("data-user-id");
+      usersname.push(name)
       $(this).parent().remove();
       appendUserToMemberList(name, user_id);
     });
 
       $(document).on("click", '.user-search-remove', function() {
+        for(i=0; i<usersname.length; i++){
+          if(usersname[i] == name){
+          usersname.splice(i,1);
+          }
       $(this).parent().remove();
-    });
+      }});
   });
 });
