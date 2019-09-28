@@ -36,9 +36,6 @@ $(function() {
   $("#user-search-field").on("keyup", function() {
     var input = $("#user-search-field").val();
     var group_id = $('.chat__group_id').val();
-    $('.chat-group-user__selected_user_id').each(function(){
-      groupId.push(groupId);
-    });
 
     if (input.length){
       $.ajax({
