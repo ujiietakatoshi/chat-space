@@ -67,7 +67,7 @@ $(function() {
     }
   });
 
-  $(function(user){
+  $(function(){
     $(document).on('click', '.user-search-add', function() {
       var name = $(this).attr("data-user-name");
       var user_id = $(this).attr("data-user-id");
@@ -75,7 +75,6 @@ $(function() {
       $(this).parent().remove();
       appendUserToMemberList(name, user_id);
     });
-
       $(document).on("click", '.user-search-remove', function() {
         for(i=0; i<usersname.length; i++){
           if(usersname[i] == name){
